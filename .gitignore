@@ -1,0 +1,12 @@
+# Ignore log files
+*.log
+
+# Ignore folder
+Alzheimer_s Dataset/
+
+Slides/
+
+# Ignore files
+.env
+.docx
+.doc
