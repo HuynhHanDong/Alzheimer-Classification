@@ -2,11 +2,10 @@
 *.log
 
 # Ignore folder
-Alzheimer_s Dataset/
-
+Combined Dataset/
+LAB02/
 Slides/
 
 # Ignore files
-.env
-.docx
-.doc
+*.docx
+*.pth
