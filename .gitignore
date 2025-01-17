@@ -1,11 +1,8 @@
-# Ignore log files
-*.log
-
 # Ignore folder
 Combined Dataset/
-LAB02/
+LAB/
 Slides/
 
 # Ignore files
 *.docx
-*.pth
+*.pdf
