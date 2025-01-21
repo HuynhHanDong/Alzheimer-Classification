@@ -25,12 +25,14 @@ File type: .jpg
 
 ## Model Training
 Each model is trained separatedly. Before training, define device and model, then run the "train_model" function.
-- ResNet152
-- DenseNet201
+- ResNet152 (coming soon)
+- DenseNet201 (coming soon)
 - MobileNetV2
 - Pre-trained MobileNetV2
+- MobileNetV3 small
+- MobileNetV3 large
 - EfficientNetB0
-- EfficientNetB4
+- EfficientNetB4 (coming soon)
 
 ## Evaluation and visualization
 - Train accuracy and loss plot
@@ -43,3 +45,6 @@ Display the original images and Grad-CAM heatmaps side-by-side for each class.
 
 ## Streamlit Interface:
 Allows users to upload an image, shows classifcation result with confidence score and displays the Grad-CAM visualization.
+
+### Chatbot
+(coming soon)
