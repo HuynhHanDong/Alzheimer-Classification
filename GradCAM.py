@@ -70,7 +70,7 @@ def apply_colormap_on_image(image, mask, alpha=0.5):
 
     Parameters: NDArray image
         image: Original image as a numpy array (H, W, 3).
-         mask: Grad-CAM heatmap as a numpy array (H, W), normalized to [0, 1].
+        mask: Grad-CAM heatmap as a numpy array (H, W), normalized to [0, 1].
         alpha: Opacity of the heatmap overlay
     """
     heatmap = cv2.applyColorMap(np.uint8(255 * mask), cv2.COLORMAP_JET)

@@ -16,7 +16,7 @@ labels = ['Mild Impairment', 'Moderate Impairment', 'No Impairment', 'Very Mild 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 # Load the pre-trained model
-model = torch.load('.\\MobileNetV2_pretrained.pth', map_location=device,weights_only=False)
+model = torch.load('.\\saved_models\\MobileNetV2_pretrained.pth', map_location=device,weights_only=False)
 
 # Define transforms to match training preprocessing
 transform = transforms.Compose([
@@ -25,7 +25,6 @@ transform = transforms.Compose([
     transforms.ToTensor(),  # Convert to PyTorch tensor
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),  # Normalize (adjust to your dataset)
 ])
-
 
 # File uploader in Streamlit
 uploaded_file = st.file_uploader('Upload an Image')
