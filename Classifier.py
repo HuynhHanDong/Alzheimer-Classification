@@ -14,7 +14,7 @@ def classify_image(model, image, class_names, transform, device):
     Returns:
         Predicted class label and confidence.
     """
-    # Ensure the model is in evaluation mode
+    model.to(device) 
     model.eval()
 
     # Transform the input image
@@ -26,9 +26,5 @@ def classify_image(model, image, class_names, transform, device):
         probabilities = torch.nn.functional.softmax(output, dim=1)
         predicted_class = torch.argmax(probabilities, dim=1).item()
         confidence = probabilities[0, predicted_class].item()
-
-    # Print the result
-    print(f"Predicted Class: {class_names[predicted_class]}")
-    print(f"Confidence: {confidence:.4f}")
 
     return class_names[predicted_class], confidence

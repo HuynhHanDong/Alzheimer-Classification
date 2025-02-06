@@ -48,6 +48,8 @@ def compute_gradCAM(model, image, transform, device):
         tranform: define transform methods to the data
         device: torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     '''
+    model.to(device) 
+
     # Transform the input image
     input_tensor = transform(image).unsqueeze(0).to(device)
 
