@@ -1,6 +1,8 @@
 # Alzheimer-Classification
 Alzheimer classification using CNN model with Pytorch
 
+**Notice**: This is a repository of a project that I worked with my teammates in subject DAP391m at FPT University, I re-up this project because the original project was set "private" by my teacher. Some of the models were trained by my teammate on their own files, therefore, the output cells of those models will be empty in this repository.
+
 ## Dataset
 Download Alzheimer MRI dataset from kaggle:
 
@@ -24,15 +26,18 @@ File type: .jpg
 - Normalize: mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
 
 ## Model Training
-Each model is trained separatedly. Before training, define device and model, then run the "train_model" function.
-- ResNet152 (coming soon)
-- DenseNet201 (coming soon)
+Each model is trained separatedly. Before training a new model, define new 'device' and new 'model' to avoid errors.  
+- ResNet50
+- ResNet152
+- DenseNet121
+- DenseNet201
 - MobileNetV2
-- Pre-trained MobileNetV2
 - MobileNetV3 small
 - MobileNetV3 large
 - EfficientNetB0
-- EfficientNetB4 (coming soon)
+- Pre-trained MobileNetV2
+
+=> As MobileNetV2 has the highest accuracy and fastest training time, we use the pre-trained MobileNetV2 to achieve higher accuracy.
 
 ## Evaluation and visualization
 - Train accuracy and loss plot
@@ -40,11 +45,11 @@ Each model is trained separatedly. Before training, define device and model, the
 - Confusion matrix
 - Precision, recall, f1-score
 
-## Grad-CAM
-Display the original images and Grad-CAM heatmaps side-by-side for each class.
+## Explainable AI
+Use Grad-CAM heatmaps and LIME visualization to understand the reasoning behind the model’s decisions.
 
 ## Streamlit Interface:
-Allows users to upload an image, shows classifcation result with confidence score and displays the Grad-CAM visualization.
+Allows users to upload an image, shows classifcation result with confidence score, displays the Grad-CAM visualization and LIME visualization.
 
 ### Chatbot
 (coming soon)
