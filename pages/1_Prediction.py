@@ -3,6 +3,8 @@ import joblib
 import numpy as np
 from lime.lime_tabular import LimeTabularExplainer
 
+st.set_page_config(page_title='Prediction')
+
 # Load the classifier
 model = joblib.load('saved_models/random_forest_classifier.pkl')
 
@@ -44,9 +46,9 @@ def LIME(input_data, model):
     explanation = explainer.explain_instance(input_data.flatten(), predict_fn, num_features=5)
 
     # Show LIME explaination
-    explanation.as_pyplot_figure()
+    fig = explanation.as_pyplot_figure()
 
-    st.write(type(explanation))
+    st.pyplot(fig)
 
 # Streamlit page title
 st.title("Predict Alzheimers")

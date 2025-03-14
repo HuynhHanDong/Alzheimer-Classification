@@ -10,6 +10,8 @@ import Classifier
 from lime import lime_image
 from skimage.segmentation import mark_boundaries
 
+st.set_page_config(page_title='Classification')
+
 # Streamlit header
 st.header('Alzheimer Classification CNN Model')
 

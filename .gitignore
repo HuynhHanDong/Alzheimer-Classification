@@ -2,7 +2,14 @@
 Combined Dataset/
 LAB/
 Slides/
+research paper/
 
 # Ignore files
 *.docx
 *.pdf
+db.sqlite3
+db.sqlite3-shm
+db.sqlite3-wal
+
+Resampling.ipynb
+Compare_CNN_models.ipynb
