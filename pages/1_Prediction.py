@@ -6,7 +6,7 @@ from lime.lime_tabular import LimeTabularExplainer
 st.set_page_config(page_title='Prediction')
 
 # Load the classifier
-model = joblib.load('saved_models/random_forest_classifier.pkl')
+model = joblib.load('saved_models/XGBoost.pkl')
 
 # Define labels for encoding
 Binary = ['No', 'Yes']
@@ -28,7 +28,7 @@ def predict_alzheimer(input_data, model):
     return prediction, probability
 
 def LIME(input_data, model):
-    class_names = ['Not Alzheimer', 'Alzheimer']
+    class_names = ["Not Alzheimer's", "Alzheimer's"]
     feature_names = ['Age', 'Gender', 'Ethnicity', 'EducationLevel',
                         'BMI', 'Smoking', 'AlcoholConsumption', 'PhysicalActivity', 'DietQuality', 'SleepQuality', 
                         'FamilyHistoryAlzheimers', 'CardiovascularDisease', 'Diabetes', 'Depression', 'HeadInjury', 'Hypertension', 
@@ -51,7 +51,7 @@ def LIME(input_data, model):
     st.pyplot(fig)
 
 # Streamlit page title
-st.title("Predict Alzheimers")
+st.title("Predict Alzheimer's")
 
 # Input form
 st.header("Demographics")
@@ -144,9 +144,9 @@ if predict_button:
 
     # Show result
     if prediction == 0:
-        st.write(f'Not Alzheimer: {proba[0][0] * 100:.2f}%')
+        st.write(f"Not Alzheimer's: {proba[0][0] * 100:.2f}%")
     else:
-        st.write(f'Alzheimer: {proba[0][1] * 100:.2f}%')
+        st.write(f"Alzheimer's: {proba[0][1] * 100:.2f}%")
 
     # show LIME explaination
     st.title("LIME Explaination")
