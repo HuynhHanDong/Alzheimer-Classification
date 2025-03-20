@@ -22,7 +22,7 @@ labels = ['Mild Impairment', 'Moderate Impairment', 'No Impairment', 'Very Mild 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 # Load the pre-trained model
-model = torch.load('.\\saved_models\\MobileNetV2_pretrained.pth', map_location=device,weights_only=False)
+model = torch.load('.\\saved_models\\EfficienNetB0.pth', map_location=device,weights_only=False)
 
 # Define transforms to match training preprocessing
 transform = transforms.Compose([
