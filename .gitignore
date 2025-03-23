@@ -7,6 +7,8 @@ research paper/
 # Ignore files
 *.docx
 *.pdf
+*.png
+*.jpg
 db.sqlite3
 db.sqlite3-shm
 db.sqlite3-wal

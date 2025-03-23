@@ -2,8 +2,10 @@ import streamlit as st
 import joblib
 import numpy as np
 from lime.lime_tabular import LimeTabularExplainer
+import altair as alt
+import pandas as pd
 
-st.set_page_config(page_title='Prediction')
+st.set_page_config(page_title="Alzheimer's Diagnosis")
 
 # Load the classifier
 model = joblib.load('saved_models/XGBoost.pkl')
@@ -27,31 +29,8 @@ def predict_alzheimer(input_data, model):
 
     return prediction, probability
 
-def LIME(input_data, model):
-    class_names = ["Not Alzheimer's", "Alzheimer's"]
-    feature_names = ['Age', 'Gender', 'Ethnicity', 'EducationLevel',
-                        'BMI', 'Smoking', 'AlcoholConsumption', 'PhysicalActivity', 'DietQuality', 'SleepQuality', 
-                        'FamilyHistoryAlzheimers', 'CardiovascularDisease', 'Diabetes', 'Depression', 'HeadInjury', 'Hypertension', 
-                        'SystolicBP', 'DiastolicBP', 'CholesterolTotal', 'CholesterolLDL', 'CholesterolHDL', 'CholesterolTriglycerides',
-                        'MMSE', 'FunctionalAssessment', 'MemoryComplaints', 'BehavioralProblems', 'ADL',
-                        'Confusion', 'Disorientation', 'PersonalityChanges', 'DifficultyCompletingTasks', 'Forgetfulness']
-
-    # Fit the Explainer on the training data set using the LimeTabularExplainer
-    explainer = LimeTabularExplainer(input_data, feature_names=feature_names, class_names=class_names, mode='classification')
-
-    # Predict function should return probability estimates
-    predict_fn = model.predict_proba
-
-    # Generate explanation for the input data
-    explanation = explainer.explain_instance(input_data.flatten(), predict_fn, num_features=5)
-
-    # Show LIME explaination
-    fig = explanation.as_pyplot_figure()
-
-    st.pyplot(fig)
-
 # Streamlit page title
-st.title("Predict Alzheimer's")
+st.title("Alzheimer's Diagnosis With ML Model")
 
 # Input form
 st.header("Demographics")
@@ -133,21 +112,26 @@ if predict_button:
     forgetfulness = encode(forgetfulness, Binary)
 
     # Predict
-    input_data = [age, gender, ethnicity, education_level, 
+    input_data = np.array([age, gender, ethnicity, education_level, 
                    bmi, smoking, alchohol, actitvity, diet, sleep, 
                    family_history, cardiovascular, diabetes, depression, headInjury, hypertension, 
                    systolicBP, diastolicBP, cholesterolTotal, cholesterolLDL, cholesterolHDL, cholesterolTriglyceride, 
                    mmse, functional, memory, behavioral, adl, 
-                   confusion, disorientation, personality_changes, difficulty_completing_tasks, forgetfulness]
-    input_data = np.array(input_data).reshape(1, -1)
+                   confusion, disorientation, personality_changes, difficulty_completing_tasks, forgetfulness]).reshape(1, -1)
+    
     prediction, proba = predict_alzheimer(input_data, model)
 
+    st.write('# Result')
     # Show result
     if prediction == 0:
         st.write(f"Not Alzheimer's: {proba[0][0] * 100:.2f}%")
     else:
         st.write(f"Alzheimer's: {proba[0][1] * 100:.2f}%")
+    
+    # Show SHAP explanation image
+    st.write("### SHAP explanation for model output")
+    st.image("SHAP.png")
 
-    # show LIME explaination
-    st.title("LIME Explaination")
-    LIME(input_data, model)
+    # Show feature importance
+    st.write("### Feature importance")
+    st.image("feature_importance.png")

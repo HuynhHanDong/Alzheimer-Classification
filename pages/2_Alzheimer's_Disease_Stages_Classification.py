@@ -10,10 +10,10 @@ import Classifier
 from lime import lime_image
 from skimage.segmentation import mark_boundaries
 
-st.set_page_config(page_title='Classification')
+st.set_page_config(page_title="Alzheimer's Disease Stages Classification")
 
 # Streamlit header
-st.header('Alzheimer Classification CNN Model')
+st.header("Alzheimer's Stages Classification With CNN Model")
 
 # Labels for the model's output
 labels = ['Mild Impairment', 'Moderate Impairment', 'No Impairment', 'Very Mild Impairment']
