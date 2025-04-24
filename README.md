@@ -3,7 +3,21 @@ Alzheimer classification using CNN model with Pytorch
 
 **Notice**: This is a repository of a project that I worked with my teammates in subject DAP391m at FPT University, I re-up this project because the original project was set "private" by my teacher. Some of the models were trained by my teammate on their own files, therefore, the output cells of those models will be empty in this repository.
 
-# Alzheimer's Disease Stages Classification Using CNN Models
+## Requirement
+- Python >= 3.10
+- Jupiter Notebook
+- pandas, numpy, matplotlib, seaborn
+- scikit-learn
+- xgboost
+- torch == 2.5.1, torchvision == 0.20.1, torchinfo == 1.8.0
+- shap, lime
+- opencv-python
+- pillow
+- joblib
+- Chatterbot
+- streamlit
+
+## Alzheimer's Disease Stages Classification Using CNN Models
 ### Dataset
 Download Alzheimer MRI dataset from kaggle:
 
@@ -44,7 +58,7 @@ Each model is trained separately. Before training a new model, define new 'devic
 ### Explainable AI
 Use Grad-CAM heatmaps and LIME visualization to understand the reasoning behind the model’s decisions.
 
-# Alzheimer's Disease Diagnosis Using ML Models
+## Alzheimer's Disease Diagnosis Using ML Models
 ### Dataset
 Download Alzheimer dataset from kaggle:
 
@@ -86,12 +100,12 @@ Once the best parameters were determined for each algorithm, the tuned models we
 ### Explainable AI
 Use SHAP for global variable explanation and LIME for local variable explanation to understand the reasoning behind the model’s decisions.
 
-# Streamlit Interface:
-## Chatbot
+## Streamlit Interface:
+### Chatbot
 A simple chatbot that can provide some information about Alzheirmer's disease.
 
-## Alzheimer's Diagnosis
+### Alzheimer's Diagnosis
 Allows users to enter data and return diagosis result with confidence score, displays the SHAP and LIME explanation.
 
-## Alzheimer's Stages Classification
+### Alzheimer's Stages Classification
 Allows users to upload an image and return classifcation result with confidence score, displays the Grad-CAM visualization and LIME visualization.
